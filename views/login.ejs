@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/login.css">
+    <title>PingPal | Login</title>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+<script src="./javascripts/login.js"></script>
+<script type="module" src="./javascripts/login_signup_animation.js"></script>
+
+<body>
+    <div id="main-login">
+        <div class="content-login">
+            <div class="login-form">
+                <div id="login-left">
+                    <h1>Login</h1>
+                    <div id="error-login"></div>
+                    <form action="/loginUser" method="POST"  name="loginForm">
+                        <input class="inputs" type="text" placeholder="Phone no." name="phone" required>
+                        <input class="inputs" type="password" placeholder="Password" name="password" required>
+                        <button class="login-submit" type="submit">Submit</button>
+                    </form>
+                    <a class="login-to-signup" href="/signup">Don't have an account? Register</a>
+                </div>
+                <div id="login-right"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

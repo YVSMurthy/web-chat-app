@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/signup.css">
+    <title>Signup</title>
+</head>
+<body>
+    <div id="main-signup">
+        <div class="content-signup">
+            <div class="signup-form">
+                <div id="signup-left"></div>
+                <div id="signup-right">
+                    <h1>Signup</h1>
+                    <div id="error-signup"></div>
+                    <form action="/signupUser" method="POST" name="signupForm">
+                        <div class="signup-inputs" >
+                            <label class="input-labels">First Name</label>
+                            <input class="signup-fields" type="text" placeholder="First Name" name="firstName" required>
+                        </div>
+                        <div class="signup-inputs" >
+                            <label class="input-labels">Last Name</label>
+                            <input class="signup-fields" type="text" placeholder="Last Name" name="lastName" required>
+                        </div>
+                        <div class="date-of-birth">
+                            <label class="dob">Date of Birth</label>
+                            <input type="date" class="dob-input" name="dob" required>
+                        </div>
+                        <div class="signup-inputs" >
+                            <label class="input-labels">Phone no.</label>
+                            <input class="signup-fields" type="text" placeholder="Phone no." name="phone" required>
+                        </div>
+                        <div class="signup-inputs">
+                            <label class="input-labels">Email</label>
+                            <input class="signup-fields" type="email" placeholder="Email id" name="email" required>
+                        </div>
+                        <div class="signup-inputs">
+                            <label class="input-labels">Password</label>
+                            <input class="signup-fields" type="password" placeholder="Password" name="password" required>
+                        </div>
+                        <div class="signup-inputs">
+                            <label class="input-labels">Confirm Password</label>
+                            <input class="signup-fields" type="password" placeholder="Password" name="confirmPassword" required>
+                        </div>
+                        <button class="signup-submit" type="submit">Submit</button>
+                    </form>
+                    <a class="signup-to-login" href="/login">Already have an account? Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+<script src="./javascripts/signup.js"></script>
+<script type="module" src="./javascripts/login_signup_animation.js"></script>
+
+</html>

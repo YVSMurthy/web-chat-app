@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/landingPage.css">
     <title>PingPal</title>
 </head>
 <body>
-    <div>
+    <div id="main">
         <div class="navbar">
-            <h1>PingPal</h1>
+            <h1 class="siteName">PingPal</h1>
             <div class="navlinks">
                 <a href="#home">Home</a>
                 <div class="dropdown">
@@ -27,34 +28,66 @@
                   </div>
                 <a href="#contact-us">Contact us</a>
             </div>
-            <a href="#" id="login">Login</a>
+            <a href="/login" id="login">Chat</a>
         </div>
         <div id="home">
             <div class="home-left">
-                <h1>This is a chat app</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, numquam voluptatibus saepe veritatis assumenda consequatur sunt reiciendis possimus neque obcaecati molestiae a magnam impedit earum minus velit exercitationem incidunt. Quibusdam velit ipsa quos enim sapiente earum assumenda deleniti aliquam quas. Quasi modi ratione possimus facere perspiciatis, doloribus dignissimos ut numquam.</p>
+                <h1 class="heading-home">This is a chat app</h1>
+                <p class="desc-home">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, numquam voluptatibus saepe veritatis assumenda consequatur sunt reiciendis possimus neque obcaecati molestiae a magnam impedit earum minus velit exercitationem incidunt. Quibusdam velit ipsa quos enim sapiente earum assumenda deleniti aliquam quas. Quasi modi ratione possimus facere perspiciatis, doloribus dignissimos ut numquam.</p>
             </div>
             <img class="chatting-img" src="images/chat.png" alt="Image of person chatting">
         </div>
         <div id="group-chat" style="min-height: 100vh;">
-            <img class="groupchat-img" src="images/groupChat.png" alt="Group of people chatting">
+            <div id="groupchat-img" data-aos="fade-right"
+                 data-aos-easing="ease-in-out"
+                 data-aos-duration="800"></div>
             <div class="groupchat-right">
-                <h1>Group Chat</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit facilis odit tenetur aliquam vitae fugiat ad! Dolor doloribus deleniti, pariatur amet, perspiciatis beatae quo repellendus possimus totam omnis tempora labore asperiores explicabo? Ipsam ea labore nostrum provident. Architecto fugit quaerat voluptatibus aut, cupiditate expedita quam adipisci quasi iste tenetur unde.</p>
+                <h1 data-aos="fade-up"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800">
+                    Group Chat
+                </h1>
+                <p data-aos="fade-up"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800"
+                data-aos-delay="200">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit facilis odit tenetur aliquam vitae fugiat ad! Dolor doloribus deleniti, pariatur amet, perspiciatis beatae quo repellendus possimus totam omnis tempora labore asperiores explicabo? Ipsam ea labore nostrum provident. Architecto fugit quaerat voluptatibus aut, cupiditate expedita quam adipisci quasi iste tenetur unde.
+                </p>
             </div>
         </div>
         <div id="chat-secured" style="min-height: 100vh;">
             <div class="chatsecured-left">
-                <h1>Full Privacy</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit facilis odit tenetur aliquam vitae fugiat ad! Dolor doloribus deleniti, pariatur amet, perspiciatis beatae quo repellendus possimus totam omnis tempora labore asperiores explicabo? Ipsam ea labore nostrum provident. Architecto fugit quaerat voluptatibus aut, cupiditate expedita quam adipisci quasi iste tenetur unde.</p>
+                <h1 data-aos="fade-up"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800">
+                    Full Privacy
+                </h1>
+                <p data-aos="fade-up"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800"
+                data-aos-delay="200">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit facilis odit tenetur aliquam vitae fugiat ad! Dolor doloribus deleniti, pariatur amet, perspiciatis beatae quo repellendus possimus totam omnis tempora labore asperiores explicabo? Ipsam ea labore nostrum provident. Architecto fugit quaerat voluptatibus aut, cupiditate expedita quam adipisci quasi iste tenetur unde.
+                </p>
             </div>
-            <img class="chatsecured-img" src="images/chatSecured1.png" alt="Group of people chatting">
+            <img class="chatsecured-img" src="images/chatSecured1.png" alt="Group of people chatting" data-aos="fade-left"
+            data-aos-easing="ease-in-out" data-aos-duration="800">
         </div>
         <div id="customer-service">
-            <img class="customer-service-img" src="images/customerService.png" alt="Group of people chatting">
+            <div id="customer-service-img" data-aos="fade-right"
+            data-aos-easing="ease-in-out"
+            data-aos-duration="800"></div>
             <div class="customer-service-right">
-                <h1>24x7 Customer Support</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit facilis odit tenetur aliquam vitae fugiat ad! Dolor doloribus deleniti, pariatur amet, perspiciatis beatae quo repellendus possimus totam omnis tempora labore asperiores explicabo? Ipsam ea labore nostrum provident. Architecto fugit quaerat voluptatibus aut, cupiditate expedita quam adipisci quasi iste tenetur unde.</p>
+                <h1 data-aos="fade-up"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800">
+                    24x7 Customer Support
+                </h1>
+                <p data-aos="fade-up"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800"
+                data-aos-delay="200">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit facilis odit tenetur aliquam vitae fugiat ad! Dolor doloribus deleniti, pariatur amet, perspiciatis beatae quo repellendus possimus totam omnis tempora labore asperiores explicabo? Ipsam ea labore nostrum provident. Architecto fugit quaerat voluptatibus aut, cupiditate expedita quam adipisci quasi iste tenetur unde.
+                </p>
             </div>
         </div>
         <div id="contact-us" style="min-height: 40vh;">
@@ -86,6 +119,16 @@
         </div>
     </div>
 </body>
+
+<!-- scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+<script type="module" src="./javascripts/landingPage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 </html>

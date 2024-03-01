@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    position: relative;
 }
 
 body, html {
     width: 100%;
     height: 100%;
+    /* background-color: #FDFDFD; */
 }
+
 
 /* Navbar styling */
 .navbar {
@@ -64,6 +67,10 @@ body, html {
     border-bottom: 2px solid blueviolet;
 }
 
+#dropdown-menu a{
+    font-size: 18px;
+}
+
 #dropdown-menu a:hover{
     color: rgb(0, 0, 0);
     border-bottom: 2px solid rgb(255, 255, 255);
@@ -103,16 +110,22 @@ body, html {
     display: flex;
     align-items: center;
     gap: 7vw;
-    padding: 3vh 2vw;
+    padding: 2vh 2vw;
+    margin-left: 2vw;
+    margin-top: -2vh;
 }
 
-.groupchat-img {
-    width: 55%;
+#groupchat-img {
+    width: 250vw;
+}
+
+.groupchat-right{
+    margin-top: 8.5vh;
 }
 
 .groupchat-right p{
     margin-top: 2vh;
-    margin-right: 3vw;
+    margin-right: 3.5vw;
     font-size: 20px;
     text-align: justify;
 }
@@ -151,8 +164,8 @@ body, html {
     padding: 3vh 2vw;
 }
 
-.customer-service-img {
-    width: 45%;
+#customer-service-img {
+    width: 175vw;
 }
 
 .customer-service-right p{
