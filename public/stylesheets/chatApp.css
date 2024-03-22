@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+.main-chat{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#left {
+    width: 30%;
+    border-right: 2px solid black;
+}
+
+.options{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 9%;
+    background-color: #dfdfdf;
+    padding: 5px 15px;
+}
+
+.options input{
+    width: 80%;
+    padding: 5px;
+}
+
+.options button{
+    padding: 5px;
+}
+
+#search-results{
+    display: none;
+    overflow-y: scroll;
+}
+
+.search-user-details{
+    padding: 15px 30px;
+}
+
+.search-user-details:hover{
+    background-color: #dfdfdf;
+}
+
+#search-result-phone{
+    margin-top: 5px;
+    color: grey;
+    margin-left: 5px;
+}
+
+.right {
+    width: 70%;
+}
+
+.contacts {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+    border-bottom: 1px solid black;
+}
+
+.contacts:hover {
+    background-color: #d0d0d0;
+    cursor: pointer;
+}
+
+.left-contact-details{
+    display: block;
+}
+
+.unread-messages{
+    opacity: 0;
+    padding: 1vh 1vw;
+    background-color: blueviolet;
+    color: #fff;
+    border-radius: 50%;
+}
+
+#chat-details{
+    height: 10.8vh;
+    background-color: #dfdfdf;
+    padding: 2vh 2vw;
+    border-bottom: 15px solid #fff;
+    display: flex;
+    align-items: center;
+}
+
+#chat-back-button{
+    padding: 10px;
+    margin-right: 20px;
+}
+
+#message-area{
+    height: 84vh;
+    background-color: fdfdfd;
+    padding: 2vh 2vw;
+    overflow-y: scroll;
+}
+
+#message-area > li{
+    list-style: none;
+    padding: 1vh 1vw;
+    background-color: #dfdfdf;
+    border: 0.5px solid black;
+    margin: 0.5vh 0;
+}
+
+#message-area > li > h3{
+    font-size: 15px;
+    color: red;
+}
+
+#message-area > li > p{
+    font-size: 15px;
+    color: black;
+}
+
+#message-send{
+    height: 7vh;
+    width: 70vw;
+    background-color: #dfdfdf;
+    padding: 1vh 1vw;
+    position: absolute;
+    bottom: 0;
+}
+
+#message-form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+#emoji-button{
+    font-size: 25px;
+}
+
+#emoji-button:hover{
+    cursor: pointer;
+    scale: 1.25;
+    transition: 0.1s ease-in-out;
+}
+
+.picker{
+    opacity: 0;
+    scale: 0.75;
+    position: absolute;
+    bottom: 20%;
+    left: -2%;
+}
+
+#message{
+    height: 100%;
+    width: 90%;
+    padding: 1vh 1vw;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#message-form button{
+    width: 7%;
+    height: 90%;
+    background-color: #000;
+    padding: 1vh 1vw;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+#message-form button:hover{
+    scale: 1.2;
+}

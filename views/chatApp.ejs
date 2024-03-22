@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PingPal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/chatApp.css">
+  <title>Chat</title>
 </head>
 <body>
-    <h1>Chat App</h1>
+  <div class="main-chat">
+    <!-- <form id="search-new-contact">
+      <input type="text" placeholder="name ...">
+      <input type="text" placeholder="phone ...">
+    </form> -->
+    <div id="left">
+      <div class="options">
+        <button onclick="toggleRight()">back</button>
+        <input type="text" placeholder="Search ..." id="user-search">
+        <button onclick="searchUser()">find</button>
+      </div>
+      <div id="chat-contacts">
+      </div>
+      <div id="search-results">
+      </div>
+      <!-- <button onclick="new_chat()">+</button> -->
+    </div>
+    <div class="right">
+      <div id="chat-details">
+        <button id="chat-back-button" onclick="document.querySelector('.right').style.opacity = 0"> ← </button>
+        <div id="receiver">
+          <h2 id="receiver-name"></h2>
+          <h4 id="receiver-no"></h4>
+        </div>
+      </div>
+      <ul id="message-area"></ul>
+      <div id="message-send">
+        <form id="message-form">
+          <div id="emoji-picker"></div>
+          <div id="emoji-button">😃</div>
+          <input type="text" name="message" id="message" placeholder="Type your message here ... " required>
+          <button id="send-message-button">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+<script src="/javascripts/chatApp.js"></script>
 </html>
