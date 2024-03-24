@@ -16,6 +16,10 @@ html, body{
     justify-content: center;
 }
 
+i{
+    font-size: 24px;
+    color: white;
+}
 
 #left {
     width: 30%;
@@ -34,11 +38,22 @@ html, body{
 
 .options input{
     width: 80%;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
 }
 
 .options button{
     padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(131, 61, 197);
+    color: #fff;
+}
+
+.options button:hover{
+    background-color: rgb(135, 37, 226);
+    cursor: pointer;
 }
 
 #search-results{
@@ -51,7 +66,7 @@ html, body{
 }
 
 .search-user-details:hover{
-    background-color: #dfdfdf;
+    cursor: pointer;
 }
 
 #search-result-phone{
@@ -68,9 +83,8 @@ html, body{
     height: 30%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 2vh 2vw;
-    border-bottom: 1px solid black;
+    gap: 2vw;
+    padding: 2vh 1vw;
 }
 
 .contacts:hover {
@@ -78,12 +92,19 @@ html, body{
     cursor: pointer;
 }
 
+.dp{
+    padding: 10px 13px;
+    border-radius: 50%;
+    border: 2px solid rgb(255, 36, 72);
+    background-color: rgb(255, 174, 187);
+}
+
 .left-contact-details{
     display: block;
 }
 
 .unread-messages{
-    opacity: 0;
+    /* opacity: 0; */
     padding: 1vh 1vw;
     background-color: blueviolet;
     color: #fff;
@@ -91,42 +112,75 @@ html, body{
 }
 
 #chat-details{
-    height: 10.8vh;
-    background-color: #dfdfdf;
-    padding: 2vh 2vw;
-    border-bottom: 15px solid #fff;
+    height: 9vh;
+    background-color: rgb(132, 56, 202);
+    padding: 2vh 1vw;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
+    color: white;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2) /*, 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+#receiver{
+    font-size: 17px;
 }
 
 #chat-back-button{
     padding: 10px;
     margin-right: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+.curr_chat_dp{
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 18px;
+    border: 2px solid rgb(255, 208, 0);
+    background-color: rgb(255, 234, 141);
+    margin-right: 30px;
+    color: black;
 }
 
 #message-area{
     height: 84vh;
-    background-color: fdfdfd;
+    width: 100%;
     padding: 2vh 2vw;
     overflow-y: scroll;
+
 }
 
 #message-area > li{
+    width: 45%;
     list-style: none;
-    padding: 1vh 1vw;
+    padding: 1.5vh 1vw;
     background-color: #dfdfdf;
     border: 0.5px solid black;
-    margin: 0.5vh 0;
+    border-radius: 15px;
+    margin: 1.75vh 0;
 }
 
-#message-area > li > h3{
-    font-size: 15px;
-    color: red;
+.messages_left{
+    border-top-left-radius: 0px !important;
+}
+
+.messages_left>p{
+    color: #000;
+}
+
+.messages_right{
+    margin-left: 56% !important;
+    background-color: blueviolet !important;
+    border-top-right-radius: 0px !important;
+}
+
+.messages_right>p{
+    color: #fff;
 }
 
 #message-area > li > p{
     font-size: 15px;
-    color: black;
 }
 
 #message-send{

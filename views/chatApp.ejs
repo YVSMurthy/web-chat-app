@@ -3,30 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="/stylesheets/chatApp.css">
   <title>Chat</title>
 </head>
 <body>
   <div class="main-chat">
-    <!-- <form id="search-new-contact">
-      <input type="text" placeholder="name ...">
-      <input type="text" placeholder="phone ...">
-    </form> -->
     <div id="left">
       <div class="options">
-        <button onclick="toggleRight()">back</button>
+        <button onclick="toggleRight()"><i class="ri-corner-up-left-fill"></i></button>
         <input type="text" placeholder="Search ..." id="user-search">
-        <button onclick="searchUser()">find</button>
+        <button onclick="searchUser()"><i class="ri-user-search-fill"></i></button>
       </div>
       <div id="chat-contacts">
       </div>
       <div id="search-results">
       </div>
-      <!-- <button onclick="new_chat()">+</button> -->
     </div>
     <div class="right">
       <div id="chat-details">
-        <button id="chat-back-button" onclick="document.querySelector('.right').style.opacity = 0"> ← </button>
+        <button id="chat-back-button" onclick="document.querySelector('.right').style.opacity = 0"><i class="ri-corner-up-left-fill"></i></button>
+        <p class="curr_chat_dp"></p>
         <div id="receiver">
           <h2 id="receiver-name"></h2>
           <h4 id="receiver-no"></h4>

@@ -107,7 +107,7 @@ app.post('/signupUser', async (req, res) => {
           "/signup?error=phone no. already used by another user"
         );
       } else {
-        const user = await userData.create({
+        await userData.create({
           firstName: firstName,
           lastName: lastName,
           phone: phone,
@@ -115,6 +115,12 @@ app.post('/signupUser', async (req, res) => {
           email: email,
           password: password,
         });
+
+        await contactData.create({
+          username: firstName,
+          phone: phone,
+          contacts: []
+        })
 
         res.redirect('/login');
       }
@@ -229,7 +235,9 @@ io.on('connection', async (socket) => {
     const receiver = receiverList[0]
     const user_unread = await contactData.findOne({phone: phone})
     const index = user_unread.contacts.findIndex(elem => elem.phone == receiver)
-    user_unread.contacts[index].unread = 0
+    if (index != -1) {
+      user_unread.contacts[index].unread = 0
+    }
     await user_unread.save()
 
     receiverList.push(phone)
@@ -238,11 +246,11 @@ io.on('connection', async (socket) => {
     const currChat = await chatData.findOne({
       participants: receiverList
     }) 
-    io.to(userSockets[phone].id).emit('load messages', (currChat)?currChat.chats:[])
+    io.to(socket.id).emit('load messages', (currChat)?currChat.chats:[])
   })
 
   socket.on('new message', async (message, receiverList) => {
-    const receiver = receiverList[0]
+      const receiver = receiverList[0]
       receiverList.push(phone)
       receiverList.sort()
       let receivers = []
@@ -272,16 +280,47 @@ io.on('connection', async (socket) => {
           chats: [currMessage]
         })
       }
-      if (userSockets[receiver].connected == false) {
-        const user_unread = await contactData.findOne({phone: receiver})
-        const index = user_unread.contacts.findIndex(elem => elem.phone == phone)
-        user_unread.contacts[index].unread += 1
-        await user_unread.save()
-        io.to(socket.id).emit('new message', { username: username, message: message, participants: receiverList});
-      }
-      else {
-        io.to(receivers).emit('new message', { username: username, message: message, participants: receiverList});
-      }
+      const user_contact = await contactData.findOne({phone: receiver})
+        const index = user_contact.contacts.findIndex(elem => elem.phone == phone)
+        console.log(index)
+        if (index == -1) {
+          user_contact.contacts.push({
+            contactName: username,
+            phone: phone,
+            unread: 0
+          })
+
+          const person = await contactData.findOne({phone: phone})
+          person.contacts.push({
+            contactName: user_contact.username,
+            phone: receiver,
+            unread: 0
+          })
+          await user_contact.save()
+          await person.save()
+
+          // updating receivers contact
+          if (userSockets[receiver].connected == true) {
+            const receiver_contacts = await contactData.findOne({phone: receiver})
+            io.to(userSockets[receiver].id).emit('userLoggedIn', receiver_contacts);
+          }
+
+          // updating the chats
+          sender_contacts = await contactData.findOne({phone: phone})
+          io.to(socket.id).emit('userLoggedIn', sender_contacts);
+        }
+        
+        if (userSockets[receiver].connected == false) {
+          const user_contact = await contactData.findOne({phone: receiver})
+          const index = user_contact.contacts.findIndex(elem => elem.phone == phone)
+          console.log(index)
+          user_contact.contacts[index].unread += 1
+          await user_contact.save()
+          io.to(socket.id).emit('new message', { username: username, message: message, participants: receiverList});
+        }
+        else {
+          io.to(receivers).emit('new message', { username: username, message: message, participants: receiverList});
+        }
   });
 
   socket.on('inc unread message', async (receiver) => {
@@ -292,9 +331,9 @@ io.on('connection', async (socket) => {
   })
   
   socket.on('find user', async (user) => {
-    const searchedContacts = contacts.contacts.filter(contact => contact.contactName === user);
-    console.log(searchedContacts)
-    io.to(socket.id).emit('user matches', searchedContacts)
+      const users = await userData.find({firstName: user})
+      const matchedContacts = users.filter(elem => elem.firstName != username)
+      io.to(socket.id).emit('user matches', matchedContacts)
   })
 
   socket.on('disconnect', () => {

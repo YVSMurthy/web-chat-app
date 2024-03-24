@@ -45,12 +45,21 @@ function addEmojiToMessage(emoji) {
 
 function addMessage(username, message) {
   const text = document.createElement('li');
-  const senderName = document.createElement('h3');
+  // const senderName = document.createElement('h3');
   const textMessage = document.createElement('p');
   textMessage.textContent = message;
-  senderName.textContent = username;
-  text.appendChild(senderName);
+  // senderName.textContent = username;
+  // text.appendChild(senderName);
   text.appendChild(textMessage);
+
+  // message css based on the sender
+  if (document.getElementById("receiver-name").textContent != username) {
+    text.classList.add('messages_right')
+  }
+  else {
+    text.classList.add('messages_left')
+  }
+
   messageArea.appendChild(text);
   messageArea.scrollTop = messageArea.scrollHeight
 }
@@ -64,26 +73,41 @@ sendButton.addEventListener('click', (e) => {
 });
 
 socket.on('userLoggedIn', (contactList) => {
+   document.getElementById('chat-contacts').innerHTML = ''
+   const dp_colors = ["rgb(255, 174, 187)", "rgb(251, 187, 161)", "rgb(255, 234, 141)", "rgb(149, 255, 141)", "rgb(141, 230, 255)"]
+   const dp_borders = ["rgb(255, 54, 87)", "rgb(255, 119, 65)", "rgb(255, 208, 0)", "rgb(0, 172, 60)", "rgb(0, 200, 255)"]
    // loading contacts
    const contacts = contactList.contacts
    contacts.forEach((contact) => {
+      var colorIndex = Math.floor(Math.random() * 5) + 1;
       const name = document.createElement('h2')
       const phone = document.createElement('h4')
       const details = document.createElement('div')
       const unread = document.createElement('h4')
+      const dp = document.createElement('p')
+      dp.classList.add('dp')
       unread.classList.add('unread-messages')
       details.classList.add('left-contact-details')
       phone.classList.add('contact-no')
+      dp.textContent = contact.contactName[0]
       name.textContent = contact.contactName
       phone.textContent = contact.phone
       unread.textContent = contact.unread
+      unread.style.opacity = (contact.unread == 0)?0:1
       details.appendChild(name)
       details.appendChild(phone)
       const contact_div = document.createElement('div')
       contact_div.classList.add('contacts')
+      contact_div.appendChild(dp)
       contact_div.appendChild(details)
       contact_div.appendChild(unread)
       document.getElementById('chat-contacts').appendChild(contact_div)
+
+      dp.style.backgroundColor = dp_colors[colorIndex]
+      dp.style.borderColor = dp_borders[colorIndex]
+      const currDP = document.querySelector('.curr_chat_dp')
+      currDP.style.backgroundColor = dp_colors[colorIndex]
+      currDP.style.borderColor = dp_borders[colorIndex]
 
       contact_div.addEventListener('click', function() {
         // selected user message display
@@ -93,6 +117,10 @@ socket.on('userLoggedIn', (contactList) => {
           unread.style.opacity = 0
           receiverList.push(contact.phone)
           messageTab.style.opacity = 1
+          const currDP = document.querySelector('.curr_chat_dp')
+          currDP.textContent = contact.contactName[0]
+          currDP.style.backgroundColor = dp_colors[colorIndex]
+          currDP.style.borderColor = dp_borders[colorIndex]
           document.getElementById("receiver-name").textContent = contact.contactName
           document.getElementById("receiver-no").textContent = contact.phone
           socket.emit('load messages', receiverList)
@@ -140,7 +168,7 @@ socket.on('user matches', (users) => {
     users.forEach((user) => {
       const name = document.createElement('h3')
       const phone = document.createElement('h4')
-      name.textContent = user.contactName
+      name.textContent = user.firstName
       phone.textContent = user.phone
       const div = document.createElement('div')
       div.classList.add('search-user-details')
@@ -152,9 +180,14 @@ socket.on('user matches', (users) => {
         // selected user message display
         receiverList = []
         if (!receiverList.includes(user.phone)) {
-          receiverList.push(user.phone)
+          receiverList.push(Number(user.phone))
           messageTab.style.opacity = 1
-          document.getElementById("receiver-name").textContent = user.contactName
+          document.getElementById("search-results").innerHTML = ''
+          document.getElementById("search-results").style.display = 'none'
+          document.getElementById('user-search').value=''
+          document.getElementById("chat-contacts").style.display = 'block'
+          document.querySelector('.curr_chat_dp').textContent = user.firstName[0]
+          document.getElementById("receiver-name").textContent = user.firstName
           document.getElementById("receiver-no").textContent = user.phone
           socket.emit('load messages', receiverList)
         }
