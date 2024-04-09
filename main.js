@@ -140,54 +140,6 @@ app.get('/chat', (req, res) => {
     res.render("chatApp")
 })
 
-app.get('/createContact', async (req, res) => {
-  await contactData.create({
-    username: "Suyash",
-    phone: 8827954540,
-    contacts: [
-      {
-        contactName: "Aabhas",
-        phone: 9829146140
-      }, 
-      {
-        contactName: "Aryajeet",
-        phone: 7905690107
-      }
-    ]
-  })
-
-  await contactData.create({
-    username: "Aryajeet",
-    phone: 7905690107,
-    contacts: [
-      {
-        contactName: "Aabhas",
-        phone: 9829146140
-      }, 
-      {
-        contactName: "Suyash",
-        phone: 8827954540
-      }
-    ]
-  })
-
-  await contactData.create({
-    username: "Aabhas",
-    phone: 9829146140,
-    contacts: [
-      {
-        contactName: "Suyash",
-        phone: 8827954540
-      }, 
-      {
-        contactName: "Aryajeet",
-        phone: 7905690107
-      }
-    ]
-  })
-
-  res.send("Created contacts")
-})
 
 app.get('/users', async (req, res) => {
   const users = await userData.find()
@@ -299,13 +251,11 @@ io.on('connection', async (socket) => {
           await user_contact.save()
           await person.save()
 
-          // updating receivers contact
           if (userSockets[receiver].connected == true) {
             const receiver_contacts = await contactData.findOne({phone: receiver})
             io.to(userSockets[receiver].id).emit('userLoggedIn', receiver_contacts);
           }
 
-          // updating the chats
           sender_contacts = await contactData.findOne({phone: phone})
           io.to(socket.id).emit('userLoggedIn', sender_contacts);
         }

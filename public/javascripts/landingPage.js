@@ -1,13 +1,3 @@
-const animationContainer = document.getElementById('groupchat-img');
-const animData = {
-	container: animationContainer,
-	renderer: 'svg',
-	loop: true,
-	autoplay: true,
-	path: './images/Creative Team.json' // Path to your Lottie JSON file
-};
-const anim = lottie.loadAnimation(animData);
-
 const animationContainer1 = document.getElementById('customer-service-img');
 const animData1 = {
 	container: animationContainer1,

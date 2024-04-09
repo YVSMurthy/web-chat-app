@@ -36,11 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function addEmojiToMessage(emoji) {
-  const cursorPosition = message.selectionStart;
-  const textBeforeCursor = message.value.substring(0, cursorPosition);
-  const textAfterCursor = message.value.substring(cursorPosition);
-  message.value = textBeforeCursor + emoji.native + textAfterCursor;
-  message.focus();
+  const picker = document.querySelector('.picker')
+  if (picker.style.opacity == 1) {
+    const cursorPosition = message.selectionStart;
+    const textBeforeCursor = message.value.substring(0, cursorPosition);
+    const textAfterCursor = message.value.substring(cursorPosition);
+    message.value = textBeforeCursor + emoji.native + textAfterCursor;
+    message.focus();
+    picker.style.opacity = 0;
+  }
 }
 
 function addMessage(username, message) {
@@ -79,7 +83,7 @@ socket.on('userLoggedIn', (contactList) => {
    // loading contacts
    const contacts = contactList.contacts
    contacts.forEach((contact) => {
-      var colorIndex = Math.floor(Math.random() * 5) + 1;
+      var colorIndex = Math.floor(Math.random() * 5);
       const name = document.createElement('h2')
       const phone = document.createElement('h4')
       const details = document.createElement('div')

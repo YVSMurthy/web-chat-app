@@ -11,7 +11,6 @@ body, html {
     /* background-color: #FDFDFD; */
 }
 
-
 /* Navbar styling */
 .navbar {
     display: flex;
@@ -60,6 +59,7 @@ body, html {
     border: none;
     color: black;
     border-bottom: 2px solid rgb(255, 255, 255);
+    z-index: 1;
 }
 
 #dropdown:hover {
@@ -80,6 +80,7 @@ body, html {
 /* Home page styling */
 
 #home {
+    z-index: -1;
     display: flex;
     align-items: center;
     gap: 7vw;
@@ -92,7 +93,7 @@ body, html {
 
 .home-left h1{
     margin-bottom: 3vh;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .home-left p{
@@ -104,55 +105,86 @@ body, html {
     width: 47%;
 }
 
-/* Group chat feature description */
+/* Browser compatibility description */
 
-#group-chat {
+#browser {
     display: flex;
     align-items: center;
     gap: 7vw;
     padding: 2vh 2vw;
-    margin-left: 2vw;
-    margin-top: -2vh;
+    margin-top: 2vh;
+    background-color: #FCFCE5;
 }
 
-#groupchat-img {
-    width: 250vw;
+#browser-img {
+    width: 50vw;
 }
 
-.groupchat-right{
+.browser-right{
     margin-top: 8.5vh;
 }
 
-.groupchat-right p{
+.browser-right p{
     margin-top: 2vh;
     margin-right: 3.5vw;
     font-size: 20px;
     text-align: justify;
 }
 
-/* Chat security description */
+/* data synchronization description */
 
-#chat-secured {
+#data-synchronized {
     display: flex;
     align-items: center;
     gap: 7vw;
     padding: 3vh 3vw;
+    background-color: #fffffa;
 }
 
-.chatsecured-left {
+.data-synchronized-left {
     margin-left: 3vw;
 }
 
-.chatsecured-left p{
+.data-synchronized-left p{
     margin-top: 2vh;
     font-size: 20px;
     text-align: justify;
 }
 
-.chatsecured-img {
-    width: 55%;
-    border-radius: 10px;
+.data-synchronized-img {
+    width: 50%;
+    border-radius: 20px;
     margin-right: 2vw;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* emoji and sticker support description */
+
+#emoji {
+    display: flex;
+    align-items: center;
+    gap: 7vw;
+    padding: 2vh 2vw;
+    margin-top: 2vh;
+    background-color: #fffffa;
+}
+
+#emoji-img {
+    width: 45vw;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-left: 2vw; 
+}
+
+.emoji-right{
+    margin-top: 8.5vh;
+}
+
+.emoji-right p{
+    margin-top: 2vh;
+    margin-right: 3.5vw;
+    font-size: 20px;
+    text-align: justify;
 }
 
 /* Customer service description */
