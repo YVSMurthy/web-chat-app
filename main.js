@@ -140,37 +140,6 @@ app.get('/chat', (req, res) => {
     res.render("chatApp")
 })
 
-
-app.get('/users', async (req, res) => {
-  const users = await userData.find()
-  res.send(users)
-})
-
-app.get('/contacts', async (req, res) => {
-  const contacts = await contactData.find()
-  res.send(contacts)
-})
-
-app.get('/allmessages', async (req, res) => {
-  const messages = await chatData.find()
-  res.send(messages)
-})
-
-app.get('/deleteUsers', async (req, res) => {
-  await userData.deleteMany()
-  res.send("Deleted users")
-})
-
-app.get('/deleteContacts', async (req, res) => {
-  await contactData.deleteMany()
-  res.send("Deleted contacts")
-})
-
-app.get('/deleteMessages', async (req, res) => {
-  await chatData.deleteMany()
-  res.send("Deleted messages")
-})
-
 userSockets = {}
 io.on('connection', async (socket) => {
   const username = socket.request.session.username;
