@@ -27,12 +27,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  // if (req.session.phone) {
-  //   res.redirect('/chat');
-  // } else {
-  //   res.render('login');
-  // }
-  res.render('login')
+  if (req.session.phone) {
+    res.redirect('/chat');
+  } else {
+    res.render('login');
+  }
+  // res.render('login')
 });
 
 app.get('/signup', (req, res) => {
@@ -131,12 +131,6 @@ app.post('/signupUser', async (req, res) => {
 });
 
 app.get('/chat', (req, res) => {
-    // if (req.session.user) {
-    //     res.render("chatApp")
-    // }
-    // else {
-    //     res.redirect("login")
-    // }
     res.render("chatApp")
 })
 

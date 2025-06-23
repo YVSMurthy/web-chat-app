@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="/stylesheets/chatApp.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/stylesheets/chatApp.css" />
   <title>Chat</title>
 </head>
 <body>
   <div class="main-chat">
+    <!-- Left Sidebar -->
     <div id="left">
       <div class="options">
-        <button onclick="toggleRight()"><i class="ri-corner-up-left-fill"></i></button>
-        <input type="text" placeholder="Search ..." id="user-search">
-        <button onclick="searchUser()"><i class="ri-user-search-fill"></i></button>
+        <button onclick="toggleRight()" class="back-btn"><i class="ri-corner-up-left-fill"></i></button>
+        <input type="text" placeholder="Search ..." id="user-search" />
+        <button onclick="searchUser()" class="search-btn"><i class="ri-user-search-fill"></i></button>
       </div>
-      <div id="chat-contacts">
-      </div>
-      <div id="search-results">
-      </div>
+      <div id="chat-contacts" class="contacts-list"></div>
+      <div id="search-results" class="search-results"></div>
     </div>
+
+    <!-- Right Chat Pane -->
     <div class="right">
       <div id="chat-details">
-        <button id="chat-back-button" onclick="document.querySelector('.right').style.opacity = 0"><i class="ri-corner-up-left-fill"></i></button>
+        <button id="chat-back-button" onclick="document.querySelector('.right').style.opacity = 0">
+          <i class="ri-corner-up-left-fill"></i>
+        </button>
         <p class="curr_chat_dp"></p>
         <div id="receiver">
           <h2 id="receiver-name"></h2>
           <h4 id="receiver-no"></h4>
         </div>
       </div>
+
       <ul id="message-area"></ul>
+
       <div id="message-send">
         <form id="message-form">
           <div id="emoji-picker"></div>
           <div id="emoji-button">😃</div>
-          <input type="text" name="message" id="message" placeholder="Type your message here ... " required>
-          <button id="send-message-button">Send</button>
+          <input type="text" name="message" id="message" placeholder="Type your message here..." required />
+          <button id="send-message-button" type="submit">Send</button>
         </form>
       </div>
     </div>
   </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+  <script src="/javascripts/chatApp.js"></script>
 </body>
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-<script src="/javascripts/chatApp.js"></script>
 </html>

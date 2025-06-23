@@ -30,20 +30,23 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#emoji-picker').appendChild(picker)
 
   document.querySelector('#emoji-button').addEventListener('click', function() {
-    picker.style.opacity = (picker.style.opacity == 1 ? 0 : 1)
-  })
+    const picker = document.querySelector('#emoji-picker');
+    picker.classList.toggle('visible');
+  });
 
 });
 
 function addEmojiToMessage(emoji) {
-  const picker = document.querySelector('.picker')
-  if (picker.style.opacity == 1) {
+  const picker = document.querySelector('#emoji-picker');
+  // Check if picker is visible by class, not inline style
+  if (picker.classList.contains('visible')) {
     const cursorPosition = message.selectionStart;
     const textBeforeCursor = message.value.substring(0, cursorPosition);
     const textAfterCursor = message.value.substring(cursorPosition);
     message.value = textBeforeCursor + emoji.native + textAfterCursor;
     message.focus();
-    picker.style.opacity = 0;
+    // Hide picker by removing the 'visible' class
+    picker.classList.remove('visible');
   }
 }
 
